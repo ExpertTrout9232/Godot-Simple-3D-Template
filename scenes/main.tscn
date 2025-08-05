@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8hg5snnyprov"]
+
+[ext_resource type="PackedScene" uid="uid://bt67hw4oj6vas" path="res://scenes/level.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://bqaoto83ats06" path="res://assets/images/crosshair.png" id="2_0wfyh"]
+
+[node name="Node" type="Node"]
+
+[node name="Level" parent="." instance=ExtResource("1_o5qli")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_0wfyh")

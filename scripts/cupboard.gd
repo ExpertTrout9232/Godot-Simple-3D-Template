@@ -11,7 +11,7 @@ func _ready() -> void:
 	drawer_state_1 = "closed"
 	drawer_state_2 = "closed"
 
-func interact(collider: Node) -> void:
+func interact(collider: Node) -> String:
 	if not animation_player.is_playing():
 		if collider.name == "DrawerArea1":
 			match drawer_state_1:
@@ -29,3 +29,4 @@ func interact(collider: Node) -> void:
 				"open":
 					animation_player.play("CloseDrawer2")
 					drawer_state_2 = "closed"
+	return ""

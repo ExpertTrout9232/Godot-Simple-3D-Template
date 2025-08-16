@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://kegw8d1dlgkn"]
+
+[ext_resource type="Material" uid="uid://dww23qbpbmtom" path="res://assets/materials/water_material.tres" id="1_5qsrt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ewrsg"]
+material = ExtResource("1_5qsrt")
+
+[node name="WaterBox" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_ewrsg")

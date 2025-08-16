@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://n4f0pa64r1sl"]
+
+[ext_resource type="Texture2D" uid="uid://bx0ddg6dv7ohp" path="res://assets/particles/explosion_particle.png" id="1_6dy78"]
+[ext_resource type="Script" uid="uid://dchse2ql5y1gn" path="res://scripts/particles/explosion_particles.gd" id="2_7poan"]
+[ext_resource type="AudioStream" uid="uid://cm8581j5usjg4" path="res://assets/audio/molotov_explosion.mp3" id="3_q624e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7poan"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_6dy78")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = -7.153
+
+[sub_resource type="QuadMesh" id="QuadMesh_q624e"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_7poan")
+
+[node name="ExplosionParticles" type="CPUParticles3D"]
+emitting = false
+amount = 128
+lifetime = 0.1
+one_shot = true
+randomness = 0.5
+mesh = SubResource("QuadMesh_q624e")
+emission_shape = 1
+emission_sphere_radius = 1.5
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = 2.0
+angular_velocity_max = 10.0
+color = Color(1, 0, 1, 1)
+script = ExtResource("2_7poan")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_q624e")
+
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_player_finished"]

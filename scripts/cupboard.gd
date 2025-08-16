@@ -3,6 +3,7 @@
 extends Node3D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var drawer_state_1: String
 var drawer_state_2: String
@@ -14,6 +15,7 @@ func _ready() -> void:
 func interact(collider: Node) -> String:
 	if not animation_player.is_playing():
 		if collider.name == "DrawerArea1":
+			audio_player.play()
 			match drawer_state_1:
 				"closed":
 					animation_player.play("OpenDrawer1")
@@ -22,6 +24,7 @@ func interact(collider: Node) -> String:
 					animation_player.play("CloseDrawer1")
 					drawer_state_1 = "closed"
 		elif collider.name == "DrawerArea2":
+			audio_player.play()
 			match drawer_state_2:
 				"closed":
 					animation_player.play("OpenDrawer2")

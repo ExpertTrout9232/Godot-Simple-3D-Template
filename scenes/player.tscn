@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwmko6awkix51"]
+[gd_scene load_steps=5 format=3 uid="uid://dwmko6awkix51"]
 
 [ext_resource type="Script" uid="uid://b2hxnc7to6dmd" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://cfkmq12mpo6p3" path="res://scenes/particles/peeing_particles.tscn" id="2_g2els"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 4
 script = ExtResource("1_3vyb7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -24,5 +26,10 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="PeeingParticles" parent="." instance=ExtResource("2_g2els")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

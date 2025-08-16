@@ -7,6 +7,8 @@ extends CharacterBody3D
 
 @onready var head: Node3D = $Head
 @onready var raycast: RayCast3D = $Head/RayCast3D
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var peeing_particles: GPUParticles3D = $PeeingParticles
 
 var start_position: Vector3
 var start_rotation: Vector3
@@ -65,8 +67,11 @@ func _physics_process(delta) -> void:
 		scale = start_scale
 	
 	if Input.is_action_just_pressed("use_item"):
-		if hand_item_node.has_method("use"):
+		if hand and hand_item_node.has_method("use"):
 			hand_item_node.use()
+	if Input.is_action_just_pressed("secondary_use_item"):
+		if hand and hand_item_node.has_method("secondary_use"):
+			hand_item_node.secondary_use()
 	if Input.is_action_just_pressed("drop_item"):
 		if hand:
 			hand_item_node.queue_free()
@@ -77,6 +82,11 @@ func _physics_process(delta) -> void:
 			item_instance.position = Vector3(position.x, position.y - 1.0, position.z)
 			
 			hand = ""
+	
+	if Input.is_action_pressed("pee"):
+		peeing_particles.emitting = true
+	else:
+		peeing_particles.emitting = false
 	
 	direction = direction.normalized()
 	
@@ -111,3 +121,10 @@ func hand_changed() -> void:
 		var item_instance: Node = item_scene.instantiate()
 		head.add_child(item_instance)
 		hand_item_node = item_instance
+		
+		if hand_item_node.has_signal("play_audio"):
+			hand_item_node.play_audio.connect(_on_play_audio)
+
+func _on_play_audio(stream: AudioStream) -> void:
+	audio_player.stream = stream
+	audio_player.play()

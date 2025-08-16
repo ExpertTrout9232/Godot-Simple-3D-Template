@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt67hw4oj6vas"]
+[gd_scene load_steps=11 format=3 uid="uid://bt67hw4oj6vas"]
 
 [ext_resource type="PackedScene" uid="uid://b3md2qxo68oin" path="res://scenes/moving_platform.tscn" id="1_2q6dc"]
 [ext_resource type="PackedScene" uid="uid://boqllreyotbly" path="res://scenes/static_platform.tscn" id="1_w7c3h"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bpp8kvhxjq7tj" path="res://scenes/cupboard.tscn" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cf52ij8ao5out" path="res://scenes/vent.tscn" id="5_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://dbc5ty2s851ew" path="res://scenes/dummy.tscn" id="6_2r41h"]
+[ext_resource type="PackedScene" uid="uid://brc8a4ai3ervc" path="res://scenes/molotov_cocktail.tscn" id="7_klq6b"]
+[ext_resource type="PackedScene" uid="uid://7ufqmvqcvytq" path="res://scenes/water_plane.tscn" id="8_b121j"]
 
 [sub_resource type="Sky" id="Sky_w7c3h"]
 
@@ -65,3 +67,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0, 
 
 [node name="Dummy3" parent="." instance=ExtResource("6_2r41h")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0, 42)
+
+[node name="MolotovCocktail1" parent="." instance=ExtResource("7_klq6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5005, 4)
+
+[node name="MolotovCocktail2" parent="." instance=ExtResource("7_klq6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5005, 5)
+
+[node name="MolotovCocktail3" parent="." instance=ExtResource("7_klq6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5005, 6)
+
+[node name="WaterPlane" parent="." instance=ExtResource("8_b121j")]
+transform = Transform3D(10000, 0, 0, 0, 1, 0, 0, 0, 10000, 0, -10, 0)

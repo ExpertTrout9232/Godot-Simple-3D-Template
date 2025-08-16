@@ -17,3 +17,6 @@ mesh = SubResource("BoxMesh_ba0x2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_nlgqw")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+size = Vector3(3, 1, 3)

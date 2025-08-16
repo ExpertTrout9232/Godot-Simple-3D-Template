@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8hg5snnyprov"]
+[gd_scene load_steps=5 format=3 uid="uid://b8hg5snnyprov"]
 
 [ext_resource type="PackedScene" uid="uid://bt67hw4oj6vas" path="res://scenes/level.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://bqaoto83ats06" path="res://assets/images/crosshair.png" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://frv8pfjjm1bc" path="res://scripts/tooltip_controller.gd" id="2_sugp2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0wfyh"]
 font_size = 20
@@ -11,6 +12,7 @@ font_size = 20
 [node name="Level" parent="." instance=ExtResource("1_o5qli")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_sugp2")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -39,7 +41,17 @@ theme_override_constants/margin_right = 5
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="InteractLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Press E to interact"
+label_settings = SubResource("LabelSettings_0wfyh")
+horizontal_alignment = 2
+
+[node name="PissLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Press F to piss yourself"
 label_settings = SubResource("LabelSettings_0wfyh")
+horizontal_alignment = 2

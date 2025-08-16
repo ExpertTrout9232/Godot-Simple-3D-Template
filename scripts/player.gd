@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal change_tooltip
+
 @export var speed: float = 5.0
 @export var jump_velocity: float = 5.0
 @export var mouse_sensitivity: float = 0.0011
@@ -37,6 +39,11 @@ func _physics_process(delta) -> void:
 		var collider: Node = raycast.get_collider()
 		var target: Node = find_interactable(collider)
 		
+		if target:
+			change_tooltip.emit("interact_tooltip", true)
+		else:
+			change_tooltip.emit("interact_tooltip", false)
+		
 		if target and Input.is_action_just_pressed("interact"):
 			var action: String = target.interact(collider)
 			
@@ -49,6 +56,8 @@ func _physics_process(delta) -> void:
 					var required_item: String = target.get_requirement()
 					if hand == required_item:
 						target.activate()
+	else:
+		change_tooltip.emit("interact_tooltip", false)
 	
 	var direction: Vector3 = Vector3.ZERO
 	

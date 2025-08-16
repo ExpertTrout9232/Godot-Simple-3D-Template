@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt67hw4oj6vas"]
+[gd_scene load_steps=12 format=3 uid="uid://bt67hw4oj6vas"]
 
 [ext_resource type="PackedScene" uid="uid://b3md2qxo68oin" path="res://scenes/moving_platform.tscn" id="1_2q6dc"]
 [ext_resource type="PackedScene" uid="uid://boqllreyotbly" path="res://scenes/static_platform.tscn" id="1_w7c3h"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbc5ty2s851ew" path="res://scenes/dummy.tscn" id="6_2r41h"]
 [ext_resource type="PackedScene" uid="uid://brc8a4ai3ervc" path="res://scenes/molotov_cocktail.tscn" id="7_klq6b"]
 [ext_resource type="PackedScene" uid="uid://7ufqmvqcvytq" path="res://scenes/water_plane.tscn" id="8_b121j"]
+[ext_resource type="PackedScene" uid="uid://b8ri5rsipye6w" path="res://scenes/door_generic.tscn" id="9_8c41q"]
 
 [sub_resource type="Sky" id="Sky_w7c3h"]
 
@@ -23,6 +24,9 @@ transform = Transform3D(-0.5, 0.612372, -0.612372, 0, 0.707107, 0.707107, 0.8660
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w8frs")
+
+[node name="WaterPlane" parent="." instance=ExtResource("8_b121j")]
+transform = Transform3D(10000, 0, 0, 0, 1, 0, 0, 0, 10000, 0, -10, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_w8frs")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
@@ -77,5 +81,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5005, 5)
 [node name="MolotovCocktail3" parent="." instance=ExtResource("7_klq6b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5005, 6)
 
-[node name="WaterPlane" parent="." instance=ExtResource("8_b121j")]
-transform = Transform3D(10000, 0, 0, 0, 1, 0, 0, 0, 10000, 0, -10, 0)
+[node name="StaticPlatform8" parent="." instance=ExtResource("1_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45)
+
+[node name="DoorGeneric" parent="." instance=ExtResource("9_8c41q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 45)

@@ -12,6 +12,8 @@ signal change_tooltip
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var peeing_particles: GPUParticles3D = $PeeingParticles
 
+var Ondrova_Proměnná: Vector4 = Vector4(7,6,7,9)
+
 var start_position: Vector3
 var start_rotation: Vector3
 var start_scale: Vector3
